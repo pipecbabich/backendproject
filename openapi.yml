@@ -1,0 +1,79 @@
+openapi: '3.0.3'
+info:
+  title: Doska
+  version: '1.0'
+servers:
+  - url: http://localhost/api
+paths:
+  /category/list:
+    get:
+      tags:
+        - Категории
+      summary: Получить список категорий
+      responses:
+        '200':
+          description: Успешный ответ с списком категорий
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      example: "Обрезная"
+
+  /product/list:
+    get:
+      tags:
+        - Продукты
+      summary: Получить список продуктов
+      responses:
+        '200':
+          description: Успешный ответ с списком продуктов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: "Доска30"
+                    price:
+                      type: number
+                      format: float
+                      example: 8992
+                    description:
+                      type: string
+                      nullable: true
+                      example: null
+                    status:
+                      type: integer
+                      example: 0
+                    category:
+                      type: object
+                      properties:
+                        category_id:
+                          type: integer
+                          example: 2
+                        category_name:
+                          type: string
+                          example: "Обрезная"
+                    attributes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: "Ширина"
+                          value:
+                            type: string
+                            example: "50"
+      
